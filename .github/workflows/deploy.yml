@@ -18,15 +18,11 @@ jobs:
           node-version: "18"
           cache: "npm"
 
-      - name: Install dependencies (use npm install instead of npm ci)
-        run: |
-          npm install
-          npm install react-scripts --save-dev
+      - name: Install dependencies
+        run: npm install
 
-      - name: Build React app
-        run: |
-          export NODE_OPTIONS="--max-old-space-size=4096"
-          npm run build
+      - name: Build Vite app
+        run: npm run build
 
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -39,7 +35,5 @@ jobs:
             git fetch --all
             git reset --hard origin/master
             npm install
-            npm install react-scripts --save-dev
-            export NODE_OPTIONS="--max-old-space-size=4096"
             npm run build
             sudo systemctl reload nginx
