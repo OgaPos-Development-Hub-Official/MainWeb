@@ -2,7 +2,7 @@ name: Deploy to VPS
 
 on:
   push:
-    branches: [master] # Changed from main to master
+    branches: [master]
 
 jobs:
   deploy:
@@ -18,9 +18,9 @@ jobs:
           node-version: "18"
           cache: "npm"
 
-      - name: Install dependencies
+      - name: Install dependencies (use npm install instead of npm ci)
         run: |
-          npm ci
+          npm install
           npm install react-scripts --save-dev
 
       - name: Build React app
@@ -37,8 +37,8 @@ jobs:
           script: |
             cd /var/www/your-app/MainWeb
             git fetch --all
-            git reset --hard origin/master  # Changed to master
-            npm ci
+            git reset --hard origin/master
+            npm install
             npm install react-scripts --save-dev
             export NODE_OPTIONS="--max-old-space-size=4096"
             npm run build
