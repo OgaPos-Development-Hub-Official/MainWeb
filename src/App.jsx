@@ -116,10 +116,10 @@ export default function App() {
             LinkedIn
           </a>
           <a
-            href="mailto:hello@healthassurance.com"
+            href="mailto:hello@healthassurance.ng"
             aria-label="Email Health Assurance"
           >
-            hello@healthassurance.com
+            hello@healthassurance.ng
           </a>
         </div>
         <p className="ha-copy">
